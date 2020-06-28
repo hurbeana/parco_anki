@@ -62,8 +62,8 @@ To give the cards some structure, I recommend splitting the basic and cloze type
 ## Contributing
 
 1. Comment on the cardset you want to work on so I can assign the issue to you. This helps others to see which cards are being worked on and which still need work. I will then assign the issue to you (github only allows me to assign a issue to commenters of the issue).
-2. Fork this repo
+2. [Fork](https://help.github.com/en/github/getting-started-with-github/fork-a-repo) this repo
 3. Add lines to the appropiate txt file (be careful for which type the card is to not break formatting while importing)
-4. Import your changes into Anki and check your addition
+4. Import your changes into Anki and check whether your addition works properly
 5. Commit your changes to your fork
-6. Do a Pull Request to push your changes (after I have double checked them) into this repo!
+6. Do a [Pull Request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork) to push your changes (after I have double checked them) into this repo!
