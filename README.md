@@ -50,7 +50,7 @@ For examples look into txts with content already present.
 One line in the txt per card with following formatting:
 
 ```
-{Text with some amount of clozures};{Tags (separated by space}
+{Text with some amount of clozures};{Tags (separated by space)}
 ```
 
 For examples look into txts with content already present.
