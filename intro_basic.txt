@@ -1,0 +1,7 @@
+Why has parallel computing largely been absent from main stream computer science during the 90s to early in the 2000 years?;Due to the "free lunch" phenomenon, also called Moore's Law;Intro free_lunch
+Another name for the "free lunch" phenomenon;Moore's Law;Intro free_lunch
+Describe what the "free lunch" phenomenon was about?;Performance of sequential computers was increasing exponentially;Intro free_lunch
+When was the "free lunch" period?;Between the 70s and early- to mid-2000 years;Intro free_lunch
+How could nominal performance be further increased after the "free lunch" period was over?;By employing parallelism;Intro free_lunch
+How is <i>nominal processor performance</i> defined?;By maximum (best-case) number of operations per unit of time (FLOPS);Intro
+How is the performance of a single processor core calculated?;clock frequency * (FLOPS/cycle);Intro

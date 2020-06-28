@@ -1,0 +1,2 @@
+The number of processing elements are called {{c1::core}} or {{c1::processor-core}};Intro
+
