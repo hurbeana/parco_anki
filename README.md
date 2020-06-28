@@ -55,7 +55,7 @@ One line in the txt per card with following formatting:
 
 For examples look into txts with content already present.
 
-Anki even support [LaTeX](https://docs.ankiweb.net/#/math?id=example) in cards, and these can even be used with clozures.
+Anki even supports [LaTeX](https://docs.ankiweb.net/#/math?id=example) in cards, and these can even be used with clozures.
 
 ### Structure
 
