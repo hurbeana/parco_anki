@@ -1,2 +1,17 @@
 The number of processing elements are called {{c1::core}} or {{c1::processor-core}};Intro
-
+The FLOPS abbreviation is ambiguous: sometimes the {{c1::FLOP's}} are meant, sometimes the {{c1::FLOP's/second}} are meant;Intro
+The major reason for "poor performance" of a processor is often that the {{c1::memory system cannot supply enough data}} to {{c2::keep the processor busy}};Intro
+At this point in time a {{c1::processor (CPU)}} consists of multiple {{c2::(processor-)cores}};Intro
+A processor with a {{c1::smaller number of cores (a handful, e.g. 2, 4, 8, 16 and 32)}} is called a {{c2::multi-core processor}};Intro
+A processor with a {{c1::larger number of cores}} is called a {{c2::many-core processor}}. These are for example {{c3::GPUs}};Intro
+Parallel Computing is {{c1::theoretical}}, {{c2::practical}} and {{c3::experimental/empirical}} Computer Science;Intro definition
+{{c1::Parallel Computing}} is a much broader scope than {{c2::parallel programming}};Intro definition
+{{c1::Parallel Computing}} is the discipline of {{c2::efficiently utilizing dedicated parallel resources}} for {{c3::solving given computation problems}};Intro definition
+{{c1::Distributed Computing}} is the discipline of {{c2::making independent, non-dedicated resources available}} and {{c3::cooperate toward solving specified problem complexes}};Intro definition
+{{c1::Concurrent Computing}} is the discipline of {{c2::managing and reasoning about interacting processes that may or may not progress simultaneously}};Intro definition
+The maximum of \(n\) numbers stored in an array can be found in {{c1::\(O(1)\)}} parallel time steps using {{c2::\(n^2\)}} processors (performing {{c3::\(O(n^2)\)}} operations) on a {{c4::Common CRCW PRAM}}.;Intro theorem
+The maximum of \(n\) numbers stored in an array can be found in {{c1::\(O(\log n)\)}} parallel time steps using {{c2::\(\frac{n}{2}\)}} processors (performing {{c3::\(O(n)\)}} operations) on a {{c4::CREW}} PRAM.;Intro theorem
+Two \(n \times n\) matrices can be multiplied into a matrix \(C\) in {{c1::\(O(n)\)}} time steps and {{c2::\(O(n^3)\)}} operations on a {{c3::CREW}} PRAM;Intro theorem
+{{c1::NUMA}} stands for {{c2::Non-Uniform Memory Access}};Intro
+{{c1::UMA}} stands for {{c2::Uniform Memory Access}};Intro
+Flynn's taxonomy looks at the {{c1::instruction and data stream}} of the system;Intro flynns_tax

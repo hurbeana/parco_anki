@@ -3,5 +3,41 @@ Another name for the "free lunch" phenomenon;Moore's Law;Intro free_lunch
 Describe what the "free lunch" phenomenon was about?;Performance of sequential computers was increasing exponentially;Intro free_lunch
 When was the "free lunch" period?;Between the 70s and early- to mid-2000 years;Intro free_lunch
 How could nominal performance be further increased after the "free lunch" period was over?;By employing parallelism;Intro free_lunch
-How is <i>nominal processor performance</i> defined?;By maximum (best-case) number of operations per unit of time (FLOPS);Intro
-How is the performance of a single processor core calculated?;clock frequency * (FLOPS/cycle);Intro
+How is <i>nominal processor performance</i> defined?;By maximum (best-case) number of operations per unit of time (FLOPS);Intro definition
+How is the performance of a single processor core calculated?;\[\text{clock frequency} \cdot \text{(FLOPS per cycle)}\];Intro
+How can one alleviate the gap between processor performance and memory access time;By introduction of larger and larger, hierarchically organized caches.;Intro
+How is <i>nominal processor performance</i> of a multi-core processor calculated?;\[\text{per-core perfomance} \cdot \text{number of cores}\];Intro
+The focus of Parallel Computing is on:;problem solving efficiency with a dedicated full computer system;Intro definition
+What is the purpose of a <i>bridging model</i>?;If algorithm A is shown to perform better than algorithm B in the model, then this should also be the case for the implementations of A and B on a real machine (thus "bridging" between theory and practice);Intro models
+What is the main issue for choosing a bridging model for Parallel Computing?;There are many different different parallel computer architectures at vastly different scales, but no model bridges them all to a useful extent.;Intro models
+What is an assumption for a theoretical algorithm model that does not hold for parallel computer systems?;The assumption of unit-time, uniform memory access for the RAM. (This is already an issue for sequential computers, even more so for large parallel systems with widely distributed memory;Intro models
+List properties of the Parallel Random Access Machine (PRAM);"
+<ul>
+  <li>Assumes as large as needed memory</li>
+  <li>Processors can read/write into memory in unit time</li>
+  <li>Number of processors is variable</li>
+  <li>Processors execute their own program</li>
+  <li>Processors are strictly synchronized (operating in lock-step)</li>
+</ul>
+</br>
+(These properties allow the PRAM to always be in a well-defined state)";Intro PRAM
+Name the three variations of how concurrent access to the same word in memory is handled in the PRAM model;"
+<ul>
+  <li>EREW (Exclusive Read Exclusive Write)</li>
+  <li>CREW (Concurrent Read Exclusive Write)</li>
+  <li>CRCW (Concurrent Read Concurrent Write)</li>
+</ul>";Intro PRAM
+What kind of CRCW (Concurrent Read Concurrent Write) "modes" exist to handle concurrent writes?;"
+<ul>
+  <li><b>Common</b> CRCW PRAM (all processors must write the same value)</li>
+  <li><b>Arbitrary</b> CRCW PRAM (either of the values written will survive arbitrarily)</li>
+  <li><b>Priority</b> CRCW PRAM (processors have priorites, value from processor with highest priority survives)</li>
+</ul>";Intro PRAM
+Name the different systems defined by Flynn's taxonomy;"
+<ul>
+  <li>Single-Instruction, Single-Data (SISD): <i>sequential computer</i></li>
+  <li>Single-Instruction, Multiple-Data (SIMD): <i>a single instructions changes for instance a vector at once</i></li>
+  <li>Multiple-Instruction, Multiple-Data (MIMD): <i>many processors have their own instruction streams and data streams</i> -> a PRAM machine</li>
+  <li>Multiple-Instruction, Single-Data (MISD): <i>(deeply) pipelined system, single stream of data passes through many stages</i>
+  <li>(Single-Program, Multiple-Data (SPMD): <i>all processors execute the same program, but operate on possibly different data-streams</i>)</li>
+</ul>";Intro flynns_tax
