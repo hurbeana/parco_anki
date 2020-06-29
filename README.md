@@ -31,7 +31,9 @@ There are 2 (general useful) types of flashcards in Anki:
 - Basic
 - [Clozure](https://docs.ankiweb.net/#/editing?id=cloze-deletion)
 
-For how to write Cards for both of those types is described in the documentation. I have written some cards in the past for [GWG](https://gist.github.com/hurbeana/dd9e8a335c6c5bdbeed267d9e70ec7e2). These can be used as a guide. You can also include some HTML for styling, but don't [overdo it](https://en.wikipedia.org/wiki/KISS_principle). To show the HTML styling in Anki, you have to check the checkbox for it when importing the txt file.
+For how to write Cards for both of those types is described in the documentation. I have written some cards in the past for [GWG](https://gist.github.com/hurbeana/dd9e8a335c6c5bdbeed267d9e70ec7e2). These can be used as a guide. You can also include some HTML for styling, but don't [overdo it](https://en.wikipedia.org/wiki/KISS_principle), since some people will possibly want to learn on a mobile device with little screenspace and HTML tends to bulk things up. To show the HTML styling in Anki, you have to check the checkbox for it when importing the txt file.
+
+For more information on how to write the cards read [here](https://docs.ankiweb.net/#/importing?id=text-files).
 
 It has come to my attention that Anki has changed the default template for basic and cloze type cards, so I think its good if contribution use following format:
 
