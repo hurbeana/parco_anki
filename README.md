@@ -6,13 +6,13 @@ This is a small repo with flashcards that can be imported into Anki to help stud
 
 Download the [Anki App](https://play.google.com/store/apps/details?id=com.ichi2.anki&hl=en) (or use the [PC/Web Version](https://apps.ankiweb.net/)) and import the .txt files into Anki. For how to use the application to learn for the exam, see various tutorials around the internet or the [Anki documentation](https://docs.ankiweb.net/), for instance [this](https://docs.ankiweb.net/#/studying) on studying with Anki.
 
-I will combine all of the basic and clozure cards into two txt files and put them in the releases every time somebody contributes (I'll try to do it at least once a day). Check out the "Releases" Tab and download the txts, so you can import everything into Anki at once.
+I will combine all of the basic and clozure cards into two txt files and put them in the releases every time somebody contributes a full set of slides (I'll try to do it at least once a day). Check out the "Releases" Tab and download the txts, so you can import everything into Anki at once. Make sure to set the correct card type (indicated by the txt name) and check the **HTML** checkbox to enable the HTML styling contained in the cards. Before clicking import, also check whether Anki has set the separator to `;` or else the import won't work. Anki sometimes decides to put `,` as a default in there for some reason.
 
 ## Structure
 
 There are following sections for which flashcards are needed (one per slide PDF mostly):
 
-- [ ] Introduction (intro)
+- [x] Introduction (intro)
 - [ ] Performance and Objectives (perf)
 - [ ] Patterns and Paradigms (pat)
 - [ ] Merging and Prefix Sums (merg)
@@ -22,7 +22,7 @@ There are following sections for which flashcards are needed (one per slide PDF 
 - [ ] Distributed Memory Systems (dismem)
 - [ ] MPI (mpi)
 
-I will have created a git issue for each of these where we can discuss per slide issue etc. Also feel free to report additional issues you find.
+I have created a git issue for each of these where we can discuss per slide issues etc. Also feel free to report additional issues you find.
 
 ## Flashcards
 
@@ -57,15 +57,22 @@ For examples look into txts with content already present.
 
 Anki even supports [LaTeX](https://docs.ankiweb.net/#/math?id=mathjax) (please use mathjax, so that it can be displayed in the mobile version of Anki) in cards, and these can even be used with clozures.
 
+Further you can upload images/screenshots to imgur and use the `img` HTML tag to embed them, but use those sparingly, because I'm not sure how well this works/looks in the mobile version of Anki.
+
 ### Structure
 
-To give the cards some structure, I recommend splitting the basic and cloze type cards into 2 separate txt files like in the GWG examples I have given (I probably will have provided the txt file structure already, just need to fill in the info).
+To give the cards some structure (and make them importable), I have split the basic and cloze type cards into 2 separate txt files like in the GWG examples I have given. Please don't mix the two card types in one txt, since you can only import one at a time and mixing them will make your work unimportable.
 
 ## Contributing
 
+Due to this being more or less a community project, any help is greatly appreciated (since I can't get all of the slides done in time before the upcoming exam). To contribute to the project follow these steps:
+
+0. Read some of the information of this README to learn how to write cards for Anki
 1. Comment on the cardset you want to work on so I can assign the issue to you. This helps others to see which cards are being worked on and which still need work. I will then assign the issue to you (github only allows me to assign a issue to commenters of the issue).
 2. [Fork](https://help.github.com/en/github/getting-started-with-github/fork-a-repo) this repo
 3. Add lines to the appropiate txt file (be careful for which type the card is to not break formatting while importing)
 4. Import your changes into Anki and check whether your addition works properly
 5. Commit your changes to your fork
 6. Do a [Pull Request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork) to push your changes (after I have double checked them) into this repo!
+
+Thank you for helping :heart:
