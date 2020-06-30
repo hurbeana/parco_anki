@@ -1,0 +1,71 @@
+List the properties of a shared-memory system model;"
+<ul>
+  <li>Consists of a fixed number of processor-cores <i>p</i></li>
+  <li>The cores are connected to a large shared memory</li>
+  <li>Every core can read/write every location in memory</li>
+  <li>Memory access time is not uniform (NUMA)</li>
+  <li>Processors are not synchronized</li>
+</ul>";shared_memory models
+Symmetric Multiprocessing (SMP);All cores are equal, OS decides when and where to run a process (thread);shared_memory definition
+What are the benefits and drawbacks of Symmetric Multiprocessing (SMP)?; The OS can exploit the cores well but sometimes it is better to pin a process to a core (e.g. private cache utilization);shared_memory cache
+What is the main difference between real shared-memory systems and their models?; Real systems use caches;shared_memory cache
+Cache coherency problem;What happens when processors read/write the same address?;shared_memory cache
+Memory consistency problem;What happens when processors read/write through different addresses?;shared_memory cache
+Temporal locality;Locations are typically used several times in close succession;shared_memory cache definition
+Spatial locality;When a location is addressed, typically locations close to it will be accessed as well;shared_memory cache definition
+How are caches used when reading memory?;If the address is found in the cache reuse it from there, else read a block from memory and store in cache;shared_memory cache
+Name and explain policies for a write cache miss;"
+<ul>
+  <li><b>Write allocate: </b>the address is loaded before written</li>
+  <li><b>Write non-allocate: </b>write in to memory without loading the address</li>
+</ul>
+
+<ul>
+  <li><b>Write-back: </b>cache line is written to memory when line is evicted (typically write allocate)</li>
+  <li><b>Write-through: </b>each write is immediately passed on to memory (typically non-allocate)</li>
+</ul>";shared_memory cache
+Name and explain cache placement policies;"
+<ul>
+  <li><b>Directly mapped: </b>a specific address can go into only one specific line</li>
+  <li><b>Fully associative: </b>a specific address can got into any line</li>
+  <li><b>Set associative: </b>a specific address can go into a set of lines</li>
+</ul>";shared_memory cache
+How is the cache hit/miss rate expressed;\[\frac{\text{number of hits/misses}}{\text{number of hits} + \text{number of misses}}\];shared_memory cache
+Name and describe the types of cache misses;"
+<ul>
+  <li><b>Capacity miss: </b>cache is full, some line must be evicted</li>
+  <li><b>Conflict miss: </b>set or specific cache line full, line from set must be evicted</li>
+</ul>";shared_memory cache
+Name eviction strategies for caches;"
+<ul>
+  <li>Least recently used (LRU)</li>
+  <li>Least frequently used (LFU)</li>
+</ul>";shared_memory cache
+When performing matrix matrix multiplication \(\mathtt{C[i][j] += A[i][k] * B[k][j]}\) what are the slowes iteration oders and why?;Innermost loop on i. Due to the matrices being stored in row-major order. Each load of \(\mathtt{A[i][k]}\) and write to \(\mathtt{C[i][j]}\) results in a cache miss while \(\mathtt{B[k][j]}\) is kept in a register.;shared_memory cache
+When performing matrix matrix multiplication \(\mathtt{C[i][j] += A[i][k] * B[k][j]}\) what are the fastest iteration oders and why?;Innermost loop on j. Due to the matrices being stored in row-major order. B and C are both accessed in row-order while \(\mathtt{A[i][k]}\) is kept in a register.;shared_memory cache
+Sketch how the recursive matrix matrix multiplication algorithm operates;"
+<ol>
+  <li>If the matix size <= cutoff perform iterative multiplication</li>
+  <li>Recurse into 8 sub-multiplications</li>
+  <li>Join sub-results into current result matrix</li>
+</ol>";shared_memory
+List the equations for each call in the recursive matix matix multiplication algorithm;\[C_{00} = A_{00} \cdot B_{00} + A_{01} \cdot B_{10}\\C_{01} = A_{00} \cdot B_{01} + A_{01} \cdot B_{11}\\C_{10} = A_{10} \cdot B_{00} + A_{11} \cdot B_{10}\\C_{11} = A_{10} \cdot B_{01} + A_{11} \cdot B_{11}\];shared_memory
+What is a cache hierarchy;Multiple caches in sequence where each is denoted as \(L_{i}\), the smaller \(i\) the closer the cache is to the core. The closer to a core the smaller and faster such a cache is;shared_memory cache
+Multi-core processor;Several cores on one chip with shared memory and caches of some sort;shared_memory cache definition
+Multi-processor system;A system with several processors not on the same chip, which can be multi-core. May have shared memory and caches;shared_memory cache definition
+When is a cache system coherent?;"
+<ul>
+  <li>If \(P\) writes to \(a\) at time \(t_1\) and reads a at \(t_2 > t_1\) and there are no other writes in-between then \(P\) reads the value written at \(t1\)</li>
+  <li>If \(P_1\) writes to \(a\) at \(t_1\) and \(P_2\) reads \(a\) at \(t_2 > t_1\) and there are no other writes in-between then \(P_2\) reads the value written by \(P_2\) at \(t_1\)</li>
+  <li>If \(P_1\) and \(P_2\) write to \(a\) at the same time then either of the values is stored at \(a\)</li>
+</ul>";shared_memory cache definition
+Memory bound;The operations per data element can be performed faster than reading/writing the element;shared_memory definition
+Compute bound;The operations per data element take longer than reading/writing the element;shared_memory definition
+Sequential consistency;Memory operations of each processor are performed in program order. Program result is some interleaveing of the memory accesses of all processors;shared_memory definition
+What causes sequential consistency not to be guaranteed by modern multi-processors?;"
+<ul>
+  <li><b>Caches: may delay writes</b></li>
+  <li><b>Write buffers: may delay or reorder writes</b></li>
+  <li><b>Memory network: may reorder writes</b></li>
+  <li><b>Compiler: may reorder updates</b></li>
+</ul>";shared_memory
