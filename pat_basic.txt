@@ -1,0 +1,41 @@
+When is a task \(t_j\) <i>directly</i> dependent on task \(t_i\) in a DAG?;When the edge \((t_i, t_j)\) exists;Patterns DAG
+When is a task \(t_j\) dependent on task \(t_i\) in a DAG?;If a directed path from \(t_i\) to \(t_j\) exists.;Patterns DAG
+When is a task \(t_j\) independent from task \(t_i\) in a DAG?;If there is no directed path from \(t_i\) to \(t_j\) or from \(t_j\) to \(t_i\);Patterns DAG
+How does a fork-join tasking DAG look like? (OpenMP programming model);<img src="https://i.imgur.com/oj5Rypr.png">;Patterns task_graphs
+Associated amount of work for task \(t_i\) in a task graph;\[T(t_i)\] (usually also depends on \(n\));Patterns task_graphs
+Total amount of work of a given task graph \(G=(V,E)\) with \(k\) tasks \(t_0,t_1,\cdots ,t_{k-1}\);\[T_{\text{1}}(n)=\sum_{i=0}^{k-1}T(t_i)\];Patterns task_graphs
+What holds when comparing the total work \(T_{\text{1}}(n)\) done in a parallelized task graph setting with the work \(T_{\text{seq}}(n)\) of a sequential solution?;\[T_{\text{1}}(n) \geq T_{\text{seq}}(n)\];Patterns task_graphs
+How would you run a task graph \(G\) on a single-core processor?;Pick a task \(t\) with no incoming edges, run it and remove all <b>outgoing</b> edges. Reapeat until done (this works because \(G\) is acyclic);Patterns task_graphs
+What is a schedule for a task graph?;When there are multiple processor-cores, the schedule picks which processor-core does which <b>ready</b> task next and removes outgoing edges of done tasks.;Patterns task_graphs
+How what is the fastest time (\(T_{p}\)) to complete a task graph with \(T_{\text{1}}(n)\) work on \(p\) processors?;No lower than \[\frac{T_{\text{1}}}{p}\] with the best possible parallelization;Pattern task_graphs
+What is the heaviest path in a task graph (and definition)?;"The path with the most total work from start to final task:
+</br>
+For tasks (\(t_r,t_1,\cdots,t_f\))
+</br>
+work for heaviest path \[T\infty (n) = T(t_r) + T(t_{\text{1}})+\cdots + T(t_f)\]";Patterns task_graphs
+How is the <b>Work Law</b> defined?;\[T_p(n) \geq \frac{T_{\text{1}}(n)}{p} \geq \frac{T_{\text{seq}}(n)}{p}\];Patterns task_graphs definition
+How is the <b>Depth Law</b> defined?;\[T_p(n) \geq T\infty(n)\];Patterns task_graphs definition
+How is the Greedy DAG scheduler defined?;Assign as many tasks as possible in each step to the availabe processors;Patterns task_graphs definition
+What does the two-optimality of greedy scheduling state?;The two-optimality of greedy scheduling states that the running time \(T_p\) achieved by a greedy scheduler is within a factor of 2 from the time that can be achieved by an optimal schedule;Patterns task_graphs scheduling
+What are important factors when parallelizing loops?;"
+<ul>
+  <li>indepentend loops, no computation before or after i affects i's computation</li>
+  <li>the computation inside an iteration has no side effects</li>
+</ul>";Patterns loops
+Loop scheduling can be done ...;"
+<ul>
+  <li>... fully explicit (e.g. MPI)</li>
+  <li>... implicitly with aid of compiler, by marking the loop</li>
+</ul>";Patterns loops
+The three (Bernstein) conditions of independence for two program fragments \(P_i\) and \(P_j\) (\(P_j\) after \(P_i\)) with inputs \(I_{\{i,j\}}\) and outputs \(O_{\{i,j\}}\) are:</br><img src="https://i.imgur.com/zrpHduB.png">;"
+<ul>
+  <li>\(O_i \cap I_j \neq \varnothing\) (true dependency, or flow dependency)</br><img style='vertical-align: middle' src='https://i.imgur.com/s9JUF7e.png'></li>
+  <li>\(I_i \cap O_j \neq \varnothing\) (anti dependency) </br> <img style='vertical-align: middle' src='https://i.imgur.com/gs3PypJ.png'></li>
+  <li>\(O_i \cap O_j \neq \varnothing\) (output dependency) </br> <img style='vertical-align: middle' src='https://i.imgur.com/xtuz5T8.png'></li>
+</ul>";Patterns in_dependency
+Write down a loop with loop carried flow dependency;"<pre><code>for (i=k; i&lt;n; i++) a[i] = a[i-k]+a[i];</code></pre>";Patterns loops in_dependency
+Write down a loop with loop carried anti-dependency;"<pre><code>for (i=0; i&lt;n-k; i++) a[i] = a[i]+a[i+k];</code></pre>";Patterns loops in_dependency
+Write down a loop with loop carried output dependency;"
+<pre><code>
+for (i=1, i&lt;n, i++)
+  if (isprime(i)) b[k] = a[i];</code></pre>";Patterns loops in_dependency
