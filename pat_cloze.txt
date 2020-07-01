@@ -1,0 +1,27 @@
+A {{c1::Directed Acyclic Graph (DAG), \(G = (V, E)\),}} consists of {{c2::a set of tasks}}, \(t_i \in V\), which are {{c3::sequential computations (strands)}};Patterns DAG
+{{c1::Tasks}} in a DAG are connected by {{c2::directed dependency edges, \((t_i, t_j) \in E\)}};Patterns Pardigms DAG
+Only {{c1::independent::independent/dependent}} tasks can be executed in {{c2::parallel::sequence/parallel}};Patterns DAG
+Since a DAG is {{c1::acyclic::acyclic/cyclic}} at least one task \(t \in G\) has no {{c2::incoming edges}}. Such a task is called {{c3::root or start}} task.;Patterns DAG
+Since a DAG is {{c1::acyclic::acyclic/cyclic}} at least one task \(t \in G\) has no {{c2::outgoing edges}}. Such a task is called {{c3::final}} task.;Patterns DAG
+In task graph computations there is normall a single start task taking input of size \(O({{c1::n}})\) and a single final task producing the results;Patterns task_graphs
+In a dynamic task graph setting, the task graph depends on {{c1::the input}}, notated as {{c2::G(n)}};Patterns task_graphs
+By executing tasks in a task graph \(G\) on a {{c1::single::single/multi}}-core process you get a {{c2::topological order}} of \(G\);Patterns task_graphs
+<b>Work Law</b> \[{{c1::T_p(n)}} \geq {{c2::\frac{T_{\text{1} }(n)}{p} }} \geq {{c3::\frac{T_{\text{seq} }(n)}{p} }}\];Patterns task_graphs definition
+<b>Depth Law</b> \[{{c1::T_p(n)}} \geq {{c2::T\infty(n)}}\];Patterns task_graphs definition
+The heaviest path in a task graph is often also called {{c1::span}} or {{c2::depth}} of a DAG;Patterns task_graph
+The heaviest path in a task graph is often referred to as a {{c1::critical path}} with length {{c2::\(T\infty\)}};Patterns task_graphs
+"The highest possible speedup in a task graph is given by \[S_p(n) = {{c1::\frac{T_{\text{seq} }(n)}{T_{\text{par} }(n)} }} {{c4::\leq}} {{c2::\frac{T_{\text{1}(n) } }{T_p(n)} }} {{c4::\leq}} {{c3::\frac{T_{\text{1} }(n)}{T\infty (n)} }}\]";Patterns task_graphs
+{{c1::\(\frac{T_{\text{1} }(n)}{T\infty (n)}\) }} is also known as the {{c2::parallelism}} of a task graph;Patterns task_graphs
+{{c1::Amdahl's Law}} applies when the critical path \(T\infty(n)\) is a {{c2::constant fraction of \(T_\text{1}(n)\)}};Patterns task_graphs
+Any greedy scheduler executes a DAG with work \(T_{\text{1}}\) and depth \(T\infty\) in \(T_p \leq {{c1::T_{\text{1} } + T\infty}}\) time steps;Patterns task_graphs scheduling
+The two-optimality of greedy scheduling states that the running time \(T_p\) achieved by a greedy scheduler is within a factor of {{c1::2}} from the time that can be achieved by {{c2::an optimal schedule}};Patterns task_graphs scheduling
+The assigment of blocks, more generally individual itereations, to processor-cores is called {{c1::loop scheduling}};Patterns loops
+The {{c1::independence::in-/dependence}} of program fragments is a {{c2::sufficient::sufficient/required/insufficient}} condition for parallel execution;Patterns in_dependency
+Dependencies between the iterations of a loop are called {{c1::loop carried dependencies}};Patterns loops in_dependency
+In a {{c1::loop carried flow dependency}}, the outcome of {{c2::an earlier}} iteration affects the computation of {{c2::a later}} iteration;Patterns loops in_dependency
+In a {{c1::loop carried anti-dependency}}, the outcome of {{c2::a later}} iteration affects the computation of {{c2::an earlier}} iteration;Patterns loops in_dependency
+In a {{c1::loop carried output dependency}}, two iterations write to the same {{c2::output variable(s)}};Patterns loops in_dependency
+{{c1::Loop carried flow dependencies}} cannot be done in parallel;Patterns loops in_dependency
+{{c1::Loop carried anti-dependencies}} cannot executed if two dependent iterations are executed in reverse or simultaneously;Patterns loops in_dependency
+{{c1::Loop carried output dependencies}} the output is not well-defined when executed simultaneously unless {{c2::were using a Common CRCW PRAM}};Patterns loop in_dependency
+{{c1::Loop carried anti-dependencies}} can be removed by {{c2::introducing an auxiliary array b intro which the results from computations on array a are written (and then after the loop copied back into a)}};Patterns loop in_dependency
