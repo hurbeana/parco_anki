@@ -9,8 +9,8 @@ List the properties of a shared-memory system model;"
 Symmetric Multiprocessing (SMP);All cores are equal, OS decides when and where to run a process (thread);shared_memory definition
 What are the benefits and drawbacks of Symmetric Multiprocessing (SMP)?; The OS can exploit the cores well but sometimes it is better to pin a process to a core (e.g. private cache utilization);shared_memory cache
 What is the main difference between real shared-memory systems and their models?; Real systems use caches;shared_memory cache
-Cache coherency problem;What happens when processors read/write the same address?;shared_memory cache
-Memory consistency problem;What happens when processors read/write through different addresses?;shared_memory cache
+What happens when processors read/write the same address?;Cache coherency problem;shared_memory cache
+What happens when processors read/write through different addresses?;Memory consistency problem;shared_memory cache
 Temporal locality;Locations are typically used several times in close succession;shared_memory cache definition
 Spatial locality;When a location is addressed, typically locations close to it will be accessed as well;shared_memory cache definition
 How are caches used when reading memory?;If the address is found in the cache reuse it from there, else read a block from memory and store in cache;shared_memory cache
