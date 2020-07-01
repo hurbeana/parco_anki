@@ -1,27 +1,27 @@
 The running time \(T_{\text{par} }(p,n)\) of a parallel algorithm Par is measured from {{c1::the start of all processor-cores}} till {{c1::the last core finishes}}.;performance objectives running_time parallel
 Inputs and experimental set-ups need to be clearly described, so that claims and observations can be {{c1::objectively verified}} and {{c1::reproduced}}.;performance objectives input experiments set-up
 Speed-up is often analyzed by keeping {{c1::the problem size n}} fixed and varying {{c2::the number of processor-cores p}}.;performance objectives speed-up
-A speed-up of {{c1::\(O(p)\)}} that is independent of n is said to be {{c2::linear. (linear speed-up is said to be perfect but hardly achievable)}}.;
-The \(\textbf{cost}\) of a parallel algorithm Par is defined as {{c1::\(p * T_{\text{par} }(p,n)\) (the “area”)}}.;
-The \(\textbf{work}\ W_{\text{seq} }(p,n)\) of a sequential algorithm Seq on input of size n is {{c1::the number of operations}} carried out by the algorithm.;
-The \(\textbf{work}\ W_{\text{par} }(p,n)\) of a parallel algorithm Par on p processor-cores is {{c1::the total work carried out by the p cores. (excluding time and operations spent idling by some processors)}};
-A parallel algorithm Par is \(\textbf{cost-optimal}\), if its {{c1::cost \(\ p * T_{\text{par} }(p,n)\)}} is {{c2::\(O(T_{\text{seq} }(n))\)}} for a best known sequential algorithm Seq.;
-A parallel algorithm Par with work \(W_{\text{par} }(p,n)\) is {{c1::work-optimal}}, if \(W_{\text{par} }(p,n)\) is {{c2::\(O(T_{\text{seq} }(n))\)}} for a best known sequential algorithm Seq.;
-Algorithms that are not {{c1::cost-optimal}} do not have {{c2::linear speed-up}}.;
-A good, parallel algorithm is {{c1::work optimal and fast}}, when given enough processors.;
-The {{c1::relative speed-up}} measures if the parallel algorithm is able to {{c2::exploit the p processors used well}}.;
-The fastest running time of a parallel algorithm Par with input of size \(O(n)\) is denoted by {{c1::\(T\infty (n) = T_{\text{par} }(p',n) \text{ for some } p'\)}}.;
-The ratio {{c1::\(\frac{T_{\text{par} }(1,n)}{T\infty (n)}\)}} is called the {{c2::parallelism}} of the parallel algorithm.;
-Parallel algorithms with overhead can still be {{c1::cost- and work-optimal}} and thus have (not perfect) linear speed-up if the overhead is {{c2::within the bounds of the sequential work, \(O(T_{\text{seq} }(n))\)}}.;
-If {{c1::overheads}} of a parallel algorithm are always larger than the sequential work, the parallel algorithm will never have {{c2::linear speed-up}}.;
-The {{c1::intervals between communication and synchronization operations}} is sometimes referred to as the {{c2::granularity}} of the parallel algorithm.;
-{{c1::Load balancing}} means achieving that {{c2::every processor used takes the same amount of time}}.;
-It is called {{c1::static load balancing}} when the amount of work {{c2::can be divided up front by the processors}}.;
-It is called {{c1::dynamic load balancing}} when the {{c2::processors have to communicate and exchange work during execution time}}.;
-Amdahl’s Law states that even the {{c1::smallest constant, sequential fraction}} of the algorithm to be parallelized will {{c2::limit and eventually kill speed-up}}.;
-It is called {{c1::scaled speed-up}} when compairing a sequential algorithm with \(T_{\text{seq} }(n) = O(T(n))\) and a parallel algorithm result in {{c2::\(\frac{t(n)}{T(n)} \rightarrow 0 \text{ as } n \rightarrow \infty \), with a parallelizable term \(T(n)\) and a non-parallelizable term \(t(n) = T\infty (n)\)}}.;
-The {{c1::efficiency}} of a parallel algorithm Par is measured by {{c2::comparing Par against the best possible parallelization of Seq}}.;
-As per definition, the efficiency of a parallel algorithm is also {{c1::the achieved speed-up divided by p}}, and {{c2::the sequential time divided by the cost of the parallel algorithm}}.;
-For the efficiency of a parallel algorithm holds that: <ul><li>{{c1::\(E_p(n) \leq 1\)}}</li><li>{{c2::If \(E_p(n) = e \text{ for some constant } e \text{, the speed-up is linear}\)}}</li><li>{{c3::Cost-optimal algorithms have constant efficiency}}</li></ul>;
-The {{c1::iso-efficiency function \(f(p)\)}}, which tells how n should grow as a function of p to maintain constant efficiency, should not grow faster than the {{c2::input size scaling function \(g(p)\)}}, which tells how much n can at most grow if the parallel time is to be kept constant.;
-{{c1::Scalability}} examines how well a {{c2::parallel algorithm or implementation performs against a sequential counterpart for the problem}}.;
+A speed-up of {{c1::\(O(p)\)}} that is independent of n is said to be {{c2::linear. (linear speed-up is said to be perfect but hardly achievable)}}.;performance objectives linear speed-up
+The \(\textbf{cost}\) of a parallel algorithm Par is defined as {{c1::\(p * T_{\text{par} }(p,n)\) (the “area”)}}.;performance objectives cost
+The \(\textbf{work}\ W_{\text{seq} }(p,n)\) of a sequential algorithm Seq on input of size n is {{c1::the number of operations}} carried out by the algorithm.;performance objectives work
+The \(\textbf{work}\ W_{\text{par} }(p,n)\) of a parallel algorithm Par on p processor-cores is {{c1::the total work carried out by the p cores. (excluding time and operations spent idling by some processors)}};performance objectives work
+A parallel algorithm Par is \(\textbf{cost-optimal}\), if its {{c1::cost \(\ p * T_{\text{par} }(p,n)\)}} is {{c2::\(O(T_{\text{seq} }(n))\)}} for a best known sequential algorithm Seq.;performance objectives cost cost-optimal
+A parallel algorithm Par with work \(W_{\text{par} }(p,n)\) is {{c1::work-optimal}}, if \(W_{\text{par} }(p,n)\) is {{c2::\(O(T_{\text{seq} }(n))\)}} for a best known sequential algorithm Seq.;performance objectives work work-optimal
+Algorithms that are not {{c1::cost-optimal}} do not have {{c2::linear speed-up}}.;performance objectives speed-up linear cost-optimal
+A good, parallel algorithm is {{c1::work optimal and fast}}, when given enough processors.;performance objectives work work-optimal
+The {{c1::relative speed-up}} measures if the parallel algorithm is able to {{c2::exploit the p processors used well}}.;performance objectives relative speed-up
+The fastest running time of a parallel algorithm Par with input of size \(O(n)\) is denoted by {{c1::\(T\infty (n) = T_{\text{par} }(p',n) \text{ for some } p'\)}}.;performance objectives running_time
+The ratio {{c1::\(\frac{T_{\text{par} }(1,n)}{T\infty (n)}\)}} is called the {{c2::parallelism}} of the parallel algorithm.;performance objectives parallelism
+Parallel algorithms with overhead can still be {{c1::cost- and work-optimal}} and thus have (not perfect) linear speed-up if the overhead is {{c2::within the bounds of the sequential work, \(O(T_{\text{seq} }(n))\)}}.;performance objectives overhead cost-optimal work-optimal
+If {{c1::overheads}} of a parallel algorithm are always larger than the sequential work, the parallel algorithm will never have {{c2::linear speed-up}}.;performance objectives overhead linear speed-up
+The {{c1::intervals between communication and synchronization operations}} is sometimes referred to as the {{c2::granularity}} of the parallel algorithm.;performance objectives synchronization granularity
+{{c1::Load balancing}} means achieving that {{c2::every processor used takes the same amount of time}}.;performance objectives load-balancing
+It is called {{c1::static load balancing}} when the amount of work {{c2::can be divided up front by the processors}}.;performance objectives load-balancing static
+It is called {{c1::dynamic load balancing}} when the {{c2::processors have to communicate and exchange work during execution time}}.;performance objectives load-balancing dynamic
+Amdahl’s Law states that even the {{c1::smallest constant, sequential fraction}} of the algorithm to be parallelized will {{c2::limit and eventually kill speed-up}}.;performance objectives Amdahl speed-up
+It is called {{c1::scaled speed-up}} when compairing a sequential algorithm with \(T_{\text{seq} }(n) = O(T(n))\) and a parallel algorithm result in {{c2::\(\frac{t(n)}{T(n)} \rightarrow 0 \text{ as } n \rightarrow \infty \), with a parallelizable term \(T(n)\) and a non-parallelizable term \(t(n) = T\infty (n)\)}}.;performance objectives scaled speed-up
+The {{c1::efficiency}} of a parallel algorithm Par is measured by {{c2::comparing Par against the best possible parallelization of Seq}}.;performance objectives efficiency
+As per definition, the efficiency of a parallel algorithm is also {{c1::the achieved speed-up divided by p}}, and {{c2::the sequential time divided by the cost of the parallel algorithm}}.;performance objectives efficiency speed-up
+For the efficiency of a parallel algorithm holds that: <ul><li>{{c1::\(E_p(n) \leq 1\)}}</li><li>{{c2::If \(E_p(n) = e \text{ for some constant } e \text{, the speed-up is linear}\)}}</li><li>{{c3::Cost-optimal algorithms have constant efficiency}}</li></ul>;performance objectives efficiency speed-up
+The {{c1::iso-efficiency function \(f(p)\)}}, which tells how n should grow as a function of p to maintain constant efficiency, should not grow faster than the {{c2::input size scaling function \(g(p)\)}}, which tells how much n can at most grow if the parallel time is to be kept constant.;performance objectives efficiency iso-efficiency
+{{c1::Scalability}} examines how well a {{c2::parallel algorithm or implementation performs against a sequential counterpart for the problem}}.;performance objectives scalability
