@@ -13,10 +13,10 @@ I will combine all of the basic and clozure cards into two txt files and put the
 There are following sections for which flashcards are needed (one per slide PDF mostly):
 
 - [x] Introduction (intro)
-- [ ] Performance and Objectives (perf)
-- [ ] Patterns and Paradigms (pat)
+- [x] Performance and Objectives (perf)
+- [x] Patterns and Paradigms (pat)
 - [ ] Merging and Prefix Sums (merg)
-- [ ] Shared Memory (shmem)
+- [x] Shared Memory (shmem)
 - [ ] PThreads (pth)
 - [ ] OpenMP (omp)
 - [ ] Distributed Memory Systems (dismem)
