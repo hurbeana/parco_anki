@@ -7,7 +7,7 @@ Total amount of work of a given task graph \(G=(V,E)\) with \(k\) tasks \(t_0,t_
 What holds when comparing the total work \(T_{\text{1}}(n)\) done in a parallelized task graph setting with the work \(T_{\text{seq}}(n)\) of a sequential solution?;\[T_{\text{1}}(n) \geq T_{\text{seq}}(n)\];Patterns task_graphs
 How would you run a task graph \(G\) on a single-core processor?;Pick a task \(t\) with no incoming edges, run it and remove all <b>outgoing</b> edges. Reapeat until done (this works because \(G\) is acyclic);Patterns task_graphs
 What is a schedule for a task graph?;When there are multiple processor-cores, the schedule picks which processor-core does which <b>ready</b> task next and removes outgoing edges of done tasks.;Patterns task_graphs
-How what is the fastest time (\(T_{p}\)) to complete a task graph with \(T_{\text{1}}(n)\) work on \(p\) processors?;No lower than \[\frac{T_{\text{1}}}{p}\] with the best possible parallelization;Pattern task_graphs
+What is the fastest time (\(T_{p}\)) to complete a task graph with \(T_{\text{1}}(n)\) work on \(p\) processors?;No lower than \[\frac{T_{\text{1}}}{p}\] with the best possible parallelization;Pattern task_graphs
 What is the heaviest path in a task graph (and definition)?;"The path with the most total work from start to final task:
 </br>
 For tasks (\(t_r,t_1,\cdots,t_f\))
