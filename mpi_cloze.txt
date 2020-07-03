@@ -1,0 +1,69 @@
+The main idea of the message-passing programming model is to {{c1::structure parallel computations}} as {{c2::sequential processes with no shared information}} that communicate explicitly by {{c3::sending and receiving <i>messages</i>}} btween each other;MPI
+CSP cannot have {{c1::data races}};MPI CSP
+CSP is focused on {{c1::synchronous, handshaking communication}};MPI CSP
+"MPI is much wider in scope than {{c1::CSP}}, because it
+<ul>
+  <li>{{c2::incorporates both <b>synchronous</b> and <b>asynchronous</b> point-to-point communication}}</li>
+  <li>{{c3::offers <b>one-sided</b> communication}}</li>
+  <li>{{c4::offers <b>collective</b> communication}}</li>
+  <li>{{c5::provides features for <b>data layout description</b>}}</li>
+  <li>{{c6::provides interaction with the <b>communication system</b>}}</li>
+  <li>{{c7::provides interaction with the <b>external environment (I/O)</b>}}</li>
+</ul>";MPI CSP
+MPI has a set of {{c1::processes (in communication domain)}} that can communicate;MPI characteristics
+MPI processes are identified by {{c1::rank in communication domain}};MPI characteristics
+MPI process ranks are {{c1::successive}}: \(0,\ldots p-1\) for \(p\) processes in domain;MPI characteristics
+MPI can have more than {{c1::one}} communication domain;MPI characteristics
+MPI domains are created relative to the {{c1::default domain of all started processes}};MPI characteristics
+MPI processes can belong to {{c1::several communication domains}};MPI characteristics
+MPI processes operate on {{c1::local data}} and all communication is {{c2::explicit}};MPI characteristics
+MPI communication is {{c1::reliable and ordered}};MPI characteristics
+MPI is {{c1::network oblivious}};MPI characteristics
+MPI structure of communicated data is {{c1::orthogonal to communication model and mode (e.g. Blocking/non-blocking and modes are orthogonal, and can be arbitrarily combined)}};MPI characteristics
+MPI communication domains may reflect {{c1::physical topology}};MPI characteristics
+"All relevant MPI functions and predefined objects are prefixed with {{c1::<code>MPI_</code>}}";MPI code
+"MPI programs need to be compiled with {{c1::a special compiler}} for example {{c2::<b><code>mpicc</code></b>}}";MPI comp_run
+MPI functions return {{c1::an error code}}, and it is {{c2::good practice to check the error code}};MPI comp_run
+"MPI can be run on {{c1::small, stand-alone}} systems with {{c2::<code>mpirun<code>}}";MPI comp_run
+"MPI can be run on {{c1::larger}} systems with {{c2::a batch scheduling system like <code>slurm<code>}}";MPI comp_run
+After {{c1::MPI library initiliazation}} processes become {{c2::MPI Processes}};MPI comp_run
+Processes are most often {{c1::bound ("pinned")}} to a specific processor;MPI
+It is possible to start {{c1::more}} MPI processes than {{c2::physical processor-cores}}. This is known as {{c3::oversubscription}};MPI comp_run
+"After processes started, the call of {{c1::<code>MPI_Init</code>}} initializes {{c2::internal MPI data strucures}};MPI init
+"After use, all {{c1::resources must freed}} with the call of {{c2::<code>MPI_Finalize</code>}}";MPI init
+"Prior to {{c1::<code>MPI_init</code> and <code>MPI_Finalize</code>}} no MPI calls can be performed, except {{c2::two check calls <code>MPI_Initializes</code> and <code>MPI_Finalized</code>}}";MPI init
+"The {{c1::<code>MPI_Abort</code>}} call can be used to {{c2::force termination in an emergency situation}}";MPI init
+"A process can read {{c1::local and (usually) not synchronized wall-clock time}} using the {{c2::<code>MPI_Wtime</code> and <code>MPI_Wtick</code>}} call(s) to {{c3::time process local operations}};MPI init
+If {{c1::argument (precondition)}} is not as specified when calling an MPI function {{c2::there is no guarantee}} that the function will {{c3::produce the desired outcome}};MPI fail_err
+MPI performs {{c1::only rudimentary checks}}A;MPI fail_err
+The programmer {{c1::cannot rely}} on the {{c2::MPI library to catch mistakes and errors}};MPI fail_err
+"Text in the standard that states that {{c1::errors <i>will</i> be handeld}} should be read as {{c2::<i>may</i> be handled}}";MPI fail_err
+Almost all MPI functions return {{c1::an error code}};MPI fail_err
+It makes sense to {{c1::check error codes and <i>try</i> to take action}}, altough there is {{c2::no guarantee}} that this will be possible beucase {{c3::the application may have crashed}};MPI fail_err
+{{c1::Communication failures due to processor/node crashes or failures in the communication system}} are typically {{c2::not handled}} errors;MPI fail_err
+The most common reason for crashes in MPI is {{c1::memory corruption}} through {{c2::wrong use of MPI functions}};MPI fail_err funcs
+MPI light error checking is due to design for {{c1::high-performance implementation}};MPI fail_err
+It is possible to {{c1::control the response of the library}} in MPI through {{c2::error handlers}};MPI fail_err
+"After {{c1::MPI initialization}} processes are put into the {{c2::default <code>MPI_COMM_WORLD</code>}} communicator";MPI comm init
+A MPI communicator is a {{c1::distributed object}} that can be operatored upon by {{c2::all processes belonging to the communicator}};MPI comm
+"A MPI communicator is referenced by a {{c1::handle of type <code>MPI_Comm</code>}}";MPI comm
+"In a MPI communicator a process can look up {{c1::the size of the communicator}} using {{c1::<code>MPI_Comm_size</code>}} and {{c2::its own rank}} using {{c2::<code>MPI_Comm_rank</code>}}";MPI comm funcs
+The rank of a MPI process in a communicator will {{c1::never}} change;MPI comm
+All communication in MPI is {{c1::relative}} to a {{c2::communicator}};MPI comm
+{{c1::MPI objects}} are {{c2::static objects}}, they {{c3::cannot be changed}};MPI comm
+The principle of {{c1::relative communication to a communicator}} allows for construction of {{c2::safe, parallel libraries}} with MPI;MPI comm libs
+"For MPI {{c1::library construction}}, the fundamental operation on communicators is the creation of {{c2::duplicate communicators}} using the {{c3::<code>MPI_Comm_dup</code>}} call";MPI comm libs
+In MPI communication on a communicator and its duplicate {{c1::can never interfere}};MPI comm libs
+MPI functions on communicators are mostly {{c1::collective operations}} called by {{c2::all processes belonging to a communicator}};MPI comm funcs
+"{{c1::<code>MPI_Comm_split</code> and <code>MPI_Comm_create</code>}} allow to {{c2::create new MPI communicators}} from existing ones, possibly with {{c3::fewer processes and different order}}";MPI comm funcs
+"{{c1::<code>MPI_Comm_split</code>}} will put processes with the same {{c2::<code>color</code>}} into the same {{c3::<code>newcomm</code>}}";MPI comm funcs
+"{{c1::<code>MPI_Comm_split</code>}} sorts processes after their {{c2::<code>key argument</code>}};MPI comm
+"MPI functions have {{c1::input and output <i>arguments</i>}}; {{c1::output arguments}} in C have {{c2::pointer type}}";MPI funcs
+"Collective MPI functions are <i>always</i> called {{c1::symmetrically (all processes make same call, possibly with different arguments)}}";MPI funcs
+"After completion of a {{c1::communicator creating operation}} each calling MPI process will belong to {{c2::two communicators}};MPI comm funcs
+"New MPI processes {{c1::cannot be created}} by {{c2::MPI communicator creating calls}};MPI comm funcs
+"The {{c1::<code>MPI_Comm_create</code>}} MPI call allows creation of {{c2::arbitrary new communicators}} based on {{c3::process groups}}";MPI comm funcs
+"A newcomm return value for the MPI call {{c1::<code>MPI_Comm_create</code>}} can be {{c2::<code>MPI_COMM_NULL</code>}} which should {{c3::not be used as an input argument}}";MPI comm funcs
+"A MPI communicator is freed by {{c1::<code>MPI_Comm_free</code>}}";MPI comm funcs
+"It is possible to compare MPI communicators with {{c1::<code>MPI_Comm_compare</code>}}";MPI comm funcs
+
