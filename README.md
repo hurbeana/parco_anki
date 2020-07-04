@@ -23,10 +23,10 @@ There are following sections for which flashcards are needed (one per slide PDF 
 - [x] Patterns and Paradigms (pat)
 - [ ] Merging and Prefix Sums (merg)
 - [x] Shared Memory (shmem)
-- [ ] PThreads (pth)
+- [x] PThreads (pth)
 - [ ] OpenMP (omp)
 - [ ] Distributed Memory Systems (dismem)
-- [ ] MPI (mpi)
+- [x] MPI (mpi) (halfway done)
 
 I have created a git issue for each of these where we can discuss per slide issues etc. Also feel free to report additional issues you find.
 
