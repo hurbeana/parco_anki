@@ -12,7 +12,7 @@ CSP is focused on {{c1::synchronous, handshaking communication}};MPI CSP
 </ul>";MPI CSP
 MPI has a set of {{c1::processes (in communication domain)}} that can communicate;MPI characteristics
 MPI processes are identified by {{c1::rank in communication domain}};MPI characteristics
-MPI process ranks are {{c1::successive}}: \(0,\ldots p-1\) for \(p\) processes in domain;MPI characteristics
+MPI process ranks are {{c1::successive}}: {{c1::\(0,\ldots p-1\)}} for \(p\) processes in domain;MPI characteristics
 MPI can have more than {{c1::one}} communication domain;MPI characteristics
 MPI domains are created relative to the {{c1::default domain of all started processes}};MPI characteristics
 MPI processes can belong to {{c1::several communication domains}};MPI characteristics
@@ -29,13 +29,13 @@ MPI functions return {{c1::an error code}}, and it is {{c2::good practice to che
 After {{c1::MPI library initiliazation}} processes become {{c2::MPI Processes}};MPI comp_run
 Processes are most often {{c1::bound ("pinned")}} to a specific processor;MPI
 It is possible to start {{c1::more}} MPI processes than {{c2::physical processor-cores}}. This is known as {{c3::oversubscription}};MPI comp_run
-"After processes started, the call of {{c1::<code>MPI_Init</code>}} initializes {{c2::internal MPI data strucures}};MPI init
+"After processes started, the call of {{c1::<code>MPI_Init</code>}} initializes {{c2::internal MPI data strucures}}";MPI init
 "After use, all {{c1::resources must freed}} with the call of {{c2::<code>MPI_Finalize</code>}}";MPI init
 "Prior to {{c1::<code>MPI_init</code> and <code>MPI_Finalize</code>}} no MPI calls can be performed, except {{c2::two check calls <code>MPI_Initializes</code> and <code>MPI_Finalized</code>}}";MPI init
 "The {{c1::<code>MPI_Abort</code>}} call can be used to {{c2::force termination in an emergency situation}}";MPI init
-"A process can read {{c1::local and (usually) not synchronized wall-clock time}} using the {{c2::<code>MPI_Wtime</code> and <code>MPI_Wtick</code>}} call(s) to {{c3::time process local operations}};MPI init
+"A process can read {{c1::local and (usually) not synchronized wall-clock time}} using the {{c2::<code>MPI_Wtime</code> and <code>MPI_Wtick</code>}} call(s) to {{c3::time process local operations}}";MPI init
 If {{c1::argument (precondition)}} is not as specified when calling an MPI function {{c2::there is no guarantee}} that the function will {{c3::produce the desired outcome}};MPI fail_err
-MPI performs {{c1::only rudimentary checks}}A;MPI fail_err
+MPI performs {{c1::only rudimentary checks}};MPI fail_err
 The programmer {{c1::cannot rely}} on the {{c2::MPI library to catch mistakes and errors}};MPI fail_err
 "Text in the standard that states that {{c1::errors <i>will</i> be handeld}} should be read as {{c2::<i>may</i> be handled}}";MPI fail_err
 Almost all MPI functions return {{c1::an error code}};MPI fail_err
@@ -57,7 +57,7 @@ In MPI communication on a communicator and its duplicate {{c1::can never interfe
 MPI functions on communicators are mostly {{c1::collective operations}} called by {{c2::all processes belonging to a communicator}};MPI comm funcs
 "{{c1::<code>MPI_Comm_split</code> and <code>MPI_Comm_create</code>}} allow to {{c2::create new MPI communicators}} from existing ones, possibly with {{c3::fewer processes and different order}}";MPI comm funcs
 "{{c1::<code>MPI_Comm_split</code>}} will put processes with the same {{c2::<code>color</code>}} into the same {{c3::<code>newcomm</code>}}";MPI comm funcs
-"{{c1::<code>MPI_Comm_split</code>}} sorts processes after their {{c2::<code>key argument</code>}};MPI comm
+"{{c1::<code>MPI_Comm_split</code>}} sorts processes after their {{c2::<code>key argument</code>}}";MPI comm
 "MPI functions have {{c1::input and output <i>arguments</i>}}; {{c1::output arguments}} in C have {{c2::pointer type}}";MPI funcs
 "Collective MPI functions are <i>always</i> called {{c1::symmetrically (all processes make same call, possibly with different arguments)}}";MPI funcs
 "After completion of a {{c1::communicator creating operation}} each calling MPI process will belong to {{c2::two communicators}};MPI comm funcs
@@ -66,4 +66,50 @@ MPI functions on communicators are mostly {{c1::collective operations}} called b
 "A newcomm return value for the MPI call {{c1::<code>MPI_Comm_create</code>}} can be {{c2::<code>MPI_COMM_NULL</code>}} which should {{c3::not be used as an input argument}}";MPI comm funcs
 "A MPI communicator is freed by {{c1::<code>MPI_Comm_free</code>}}";MPI comm funcs
 "It is possible to compare MPI communicators with {{c1::<code>MPI_Comm_compare</code>}}";MPI comm funcs
-
+"A {{c1::cartesian communicator}} is created by the call {{c2::<code>MPI_Cart_create</code>}}";MPI org funcs
+"A {{c1::cartesian communicator}} carries additional information about {{c2::the size of the grid}}";MPI org
+"{{c1::<code>MPI_Cart_rank</code> and <code>MPI_Cart_coords</code>}} are used to translate between {{c2::ranks and coordinate vectors}} of MPI cartesian communicators";MPI org funcs
+"The {{c1::<code>reorder</code>}} flag of {{c1::<code>MPI_Cart_create</code>}} attempts to {{c3::reorder (rerank)}} processes, so as to {{c4::better reflect process communication}}";MPI org funcs
+"MPI reranking based on most intense communication is generalized in the so-called {{c1::distributed graph communicators}}, by specifing {{c2::weighted communication edges}}";MPI org
+"A MPI communicator is a {{c1::distributed object}}";MPI hand
+"MPI objects are either {{c1::distributed across all processes}} or {{c2::local objects}}";MPI hand
+"MPI handles are mostly {{c1::opaque}}";MPI hand
+"{{c1::<code>MPI_Comm</code>}} is the type for {{c2::communicators}}, that are {{c3::distributed objects}}";MPI hand type
+"{{c1::<code>MPI_Win</code>}} is the type for {{c2::communication windows}}, that are {{c3::distributed objects}}";MPI hand type
+"{{c1::<code>MPI_Datatype</code>}} is the type for {{c2::datatypes}} ({{c3::local objects}})";MPI hand type
+"{{c1::<code>MPI_Group</code>}} is the type for {{c2::ordered set of processes}} ({{c3::local objects}})";MPI hand type
+"{{c1::<code>MPI_Status</code>}} is the type for {{c2::information returned from a communication operation}} ({{c3::local objects}})";MPI hand type
+"{{c1::<code>MPI_Request</code>}} is the type for {{c2::information about open communication operation}} ({{c3::local objects}})";MPI hand type
+"{{c1::<code>MPI_Op</code>}} is the type for {{c2::binary operation}} ({{c3::local objects}})";MPI hand type
+"{{c1::<code>MPI_Errhandler</code>}} is the type for {{c2::action to be taken on discovery of an error or failure}} ({{c3::local objects}})";MPI hand type
+"{{c1::<code>MPI_Info</code>}} is the type for {{c2::specifying additional information when creating objects}} ({{c3::local objects}})";MPI hand type
+"{{c1::<code>MPI_Status</code>}} is the only type of object that {{c2::is an exception to the opaqueness property of handles}}";MPI hand
+"No {{c1::communication operations}} are defined on process groups, they are only used to {{c2::locally compute other ordered sets of processes}}";MPI grp
+"MPI process groups are used as {{c1::input to a number of other (often collective) MPI functions}}";MPI grp
+"The {{c1::<code>MPI_Comm_group</code>}} MPI call is a {{c2::local operation}} that a process can perform on a communicator";MPI grp funcs
+"{{c1::<code>MPI_Group_size</code> and <code>MPI_Group_rank</code>}} can be used to query size and rank in a group (locally). If a calling process does not belong to a group, the special value {{c2::<code>MPI_UNDEFINED</code>}} is returned";MPI grp funcs
+"MPI communication has {{c1::no connectivity restrictions}}, meaning that processes communicate as if they {{c2::were running on processors in a fully-connected network}}";MPI p2p
+"MPI communication is {{c1::always reliable}} and the transmitted message always {{c2::arrives uncorrupted}} and {{c2::in full}}";MPI p2p
+"In {{c1::point-to-point communication}} two processes are involved {{c2::explicitly}}";MPI p2p
+"In {{c1::point-to-point communication}} the sending process has to specify {{c2::the amount of data to be sent}} to a {{c3::determinate process}}, which has to prepare to receive {{c4::at least the sent amount of data}}";MPI p2p
+"By calling {{c1::<code>MPI_Send</code>}} a sending process {{c2::initiates and completes sending data}} to the receiving process";MPI p2p funcs
+"The {{c1::<code>MPI_Send</code>}} call returns when data is {{c2::safely underway}} and the {{c3::send buffer can be rused}}";MPI p2p funcs
+"By calling {{c1::<code>MPI_Recv</code>}} the receiving process declares itself {{c2::ready to receive up to the described amount of data}}";MPI p2p funcs
+"The {{c1::<code>MPI_Recv</code>}} call returns when {{c2::the data sent has been received}}";MPI p2p funcs
+"For point-to-point communication to take place, both receiving and sending process must give the same {{c1::message tag}}";MPI p2p funcs
+"One important MPI principle is that almost all space for {{c1::MPI data}} is in {{c2::user space}}";MPI
+"When using MPI it is always up to the programmer to {{c1::allocate enough buffer space}} (and {{c1::free it later}}) for data that is being sent and received";MPI
+"{{c1::<code>MPI_Sendrecv</code>}} is a {{c2::combined send and receive operation}} that {{c2::doesn't block on sending}}";MPI p2p funcs
+"Using {{c1::<code>MPI_Get_count</code> and <code>MPI_Get_elements</code>}} MPI calls it is possible to find out {{c2::how much data was sent}}, because {{c3::it is possible to specify to receive more data than sending}}";MPI p2p funcs
+"It is possible to used {{c1::non-determinate}} reception in point-to-point MPI communication using {{c2::<code>MPI_ANY_SOURCE</code> and <code>MPI_ANY_TAG</code>}}";MPI p2p funcs
+"In point-to-point communication sending and receiving is {{c1::blocking}}, meaning that {{c2::the call will return when the operation is locally complete}}";MPI sem
+"A return from {{c1::<code>MPI_Send</code>}} does not mean that the {{c2::data has been received by the receiving process, it could just be buffered somewhere}}";MPI sem
+"{{c1::Immediate operations}} in MPI {{c2::return immediately}} and such are called {{c3::non-blocking operations}}";MPI sem
+"{{c1::<code>MPI_Comm_rank</code> and <code>MPI_Comm_size</code>}} are examples for operations that have {{c2::local completion}}, because they {{c3::always complete independently of action by other processes}}";MPI sem
+"MPI Operations that have {{c1::non-local completion}} {{c2::may need other processes}} to complete their operation";MPI sem
+"{{c1::Non-blocking calls}} have {{c2::non-local completion}} per definition";MPI sem
+"Relying on MPI implementation, such as {{c1::buffering on <code>MPI_Send</code>}}, is called {{c2::unsafe programming}}";MPI sem
+"When using MPI, data to be communicated is always specified with {{c1::buffer}}, {{c1::count}}, {{c1::datatype}} (in that order)";MPI data
+"When describing the layout of data to be communicated, the {{c1::type signature}} and {{c1::type map}} is to be specified";MPI data
+"The MPI {{c1::type map}} is a signature with {{c1::displacements}}, for each element {{c1::an offset}}";MPI data
+"There is an MPI datatype {{c1::for each simple, elementary programming language datatype}}";MPI data
