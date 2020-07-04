@@ -1,0 +1,64 @@
+Name the information available to each thread in a process;"
+<ul>
+  <li>File pointers</li>
+  <li>Global variables</li>
+  <li>Static variables</li>
+  <li>Heap storage</li>
+</ul>";pthreads
+Name the private information available to a thread;"
+<ul>
+  <li>Local variables</li>
+  <li>Registers</li>
+  <li>Thread local storage</li>
+</ul>";pthreads
+Name the main characteristics of the pthreads programming model;"
+<ul>
+  <li>Fork-join parallelism</li>
+  <li>Threads are symmetric peers</li>
+  <li>Threads are referenced by thread identifiers</li>
+  <li>One initial main thread</li>
+  <li>SPMD but can be MIMD</li>
+  <li>Threads are scheduled by the OS</li>
+  <li>No implicit synchronization</li>
+  <li>Threads in a process share global information</li>
+  <li>Synchronization and updates to shared objects is doen with coordination constructs</li>
+</ul>";pthreads
+What is fork-join parallelism?;A thread can spawn any number of new threads and wait for completion of those;pthreads
+Explain what "threads are symmetric peers" means;Any thread can wait for completion of any other via the thread identifier;pthreads
+What happens when multiple threads update the same object without using coordination constructs?;The program is illegal and the outcome is undefined;pthreads
+Do pthreads come with a performance model for analyzing the performance of pthreads programs?;No;pthreads
+Do pthreads come with a memory model?;No except for requiring that updates to shared information is done via the provided coordination constructs;pthreads
+Does pthreads put a limit on the number of threads to be spawned?;No only system limitations are of concern;pthreads
+What happens when more threads are spawned than there are cores available?;The OS will handle how and when threads are scheduled to run;pthreads
+What is pthreads?;A C library providing functionality for handling threads;pthreads
+What is a race condition?;Non-deterministic updates to shared objects and variables which can lead to different non-deterministic results some of which are not correct;pthreads definition
+What is a data race?;A situation where two or more threads access a shared object and at least one of them is an update;pthreads definition
+What is a critical section?;A piece of code that should not be executed concurrently by several threads;pthreads definition
+What is mutual exclusion?;Guaranteeing that a critical section is being executed by at most one thread;pthreads definition
+What is a lock?;A programming model mechanism that guarantees mutual exclusion;pthreads definition
+What operations do locks support?;Acquire or lock will assign the lock to the thread or block it if it has already been acquired. Release or unlock will make the lock available for locking again;pthreads
+What is the meaning of deadlock free?;If any number of threads are trying to aquire a lock eventually one thread must succeed and get it;pthreads definition
+What is the meaning of starvation free?;If any specific thread is trying to aquire a lock it will eventually get it;pthreads definition
+What is the meaning of fairness regarding locks?;It is a stronger version of starvation freeness where the order of requests for acquiring a lock will be preserved;pthreads definition
+What do pthread mutex'es guarantee?;Mutual exclusion and deadlock freeness but not starvation freeness;pthreads
+What does it mean for a lock to be contended?;Many threads are competing for it;pthreads definition
+What happens when a lock is contended?;The concurrent execution of the thredas trying to aquire it will serialize;pthreads
+What is a try-lock operation on a mutex?;If the lock is free it will be acquired else it returns with a condition code and does not block;pthreads
+How do reader writer locks work?;Each operation has a reader and writer version. Many readers can acquire the lock at the same time but only one writer is possible;pthreads
+What is a spin-lock?;A specific implementation of locks where a blocked thread will constantly keep checking if the lock is free;pthreads definition
+What is a blocking lock?;A specific implementation of locks where a blocked thread will be put to sleep by the OS until it acquires the lock;pthreads definition
+When are blocking advantageous over splin-locks?;When the system is oversubscribed;pthreads
+What are condition variables?;An object associated with a mutex variable. A thread can wait on such a condition suspending itself and releasing the lock until another thread signals on the condition variable;pthreads definition
+What does a broadcast operation on a condition variable do?;Wake up all waiting threads one after the other;pthreads
+What happens when a signal on a condition variable where no thread is waiting is issued?;Nothing the signal will be lost;pthreads
+What is the standard usage pattern for locks with condition variables called?;Monitor;pthreads
+What is a thread barrier?;A construct which will block when reached until all threads have reached it;pthreads definition
+What is a recursive lock?;A lock which won't block on successive calls to acquire by the same thread if it has been successfully acquired;pthreads definition
+What issue can arise from long critical sections?;It can lead to serialization;pthreads
+Are locks fault tolerant?;No a thread crashing in a critical section can lead to a deadlock;pthreads
+How can non fair locks influnce performance?;Some threads can be starved out and thus not contribute to the overall progress;pthreads
+What is priority inversion?;When one thread with lower priority prevents a thread with higher priority from running;pthreads
+What are atomic instructions?;A sequence of instructions which can't be interrupted by or interleaved with other instructions. Needs hardware suppport and is expensive;pthreads definition
+What is wait-freeness?;The property of atomic operations completing in some finite bounded number of clock cycles regardless of what other cores are doing;pthreads definition
+What is the advantage of atomic operations over locks?;Deadlocks are not possible and a crashed thread will not block other threads;pthreads
+What is lock-freeness?;When several threads are performing the operation some thread will be able to complete in a bounded amount of time;pthreads definition
