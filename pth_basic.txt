@@ -42,7 +42,7 @@ What is the meaning of starvation free?;If any specific thread is trying to aqui
 What is the meaning of fairness regarding locks?;It is a stronger version of starvation freeness where the order of requests for acquiring a lock will be preserved;pthreads definition
 What do pthread mutex'es guarantee?;Mutual exclusion and deadlock freeness but not starvation freeness;pthreads
 What does it mean for a lock to be contended?;Many threads are competing for it;pthreads definition
-What happens when a lock is contended?;The concurrent execution of the thredas trying to aquire it will serialize;pthreads
+What happens when a lock is contended?;The concurrent execution of the threads trying to aquire it will serialize;pthreads
 What is a try-lock operation on a mutex?;If the lock is free it will be acquired else it returns with a condition code and does not block;pthreads
 How do reader writer locks work?;Each operation has a reader and writer version. Many readers can acquire the lock at the same time but only one writer is possible;pthreads
 What is a spin-lock?;A specific implementation of locks where a blocked thread will constantly keep checking if the lock is free;pthreads definition
