@@ -60,7 +60,7 @@ MPI functions on communicators are mostly {{c1::collective operations}} called b
 "{{c1::<code>MPI_Comm_split</code>}} sorts processes after their {{c2::<code>key argument</code>}}";MPI comm
 "MPI functions have {{c1::input and output <i>arguments</i>}}; {{c1::output arguments}} in C have {{c2::pointer type}}";MPI funcs
 "Collective MPI functions are <i>always</i> called {{c1::symmetrically (all processes make same call, possibly with different arguments)}}";MPI funcs
-"After completion of a {{c1::communicator creating operation}} each calling MPI process will belong to {{c2::two communicators}};MPI comm funcs
+"After completion of a {{c1::communicator creating operation}} each calling MPI process will belong to {{c2::two communicators}}";MPI comm funcs
 "New MPI processes {{c1::cannot be created}} by {{c2::MPI communicator creating calls}};MPI comm funcs
 "The {{c1::<code>MPI_Comm_create</code>}} MPI call allows creation of {{c2::arbitrary new communicators}} based on {{c3::process groups}}";MPI comm funcs
 "A newcomm return value for the MPI call {{c1::<code>MPI_Comm_create</code>}} can be {{c2::<code>MPI_COMM_NULL</code>}} which should {{c3::not be used as an input argument}}";MPI comm funcs
