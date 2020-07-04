@@ -6,7 +6,13 @@ This is a small repo with flashcards that can be imported into Anki to help stud
 
 Download the [Anki App](https://play.google.com/store/apps/details?id=com.ichi2.anki&hl=en) (or use the [PC/Web Version](https://apps.ankiweb.net/)) and import the .txt files into Anki. For how to use the application to learn for the exam, see various tutorials around the internet or the [Anki documentation](https://docs.ankiweb.net/), for instance [this](https://docs.ankiweb.net/#/studying) on studying with Anki.
 
+### txt importing
+
 I will combine all of the basic and clozure cards into two txt files and put them in the releases every time somebody contributes a full set of slides (I'll try to do it at least once a day). Check out the "Releases" Tab and download the txts, so you can import everything into Anki at once. Make sure to set the correct card type (indicated by the txt name) and check the **HTML** checkbox to enable the HTML styling contained in the cards. Before clicking import, also check whether Anki has set the separator to `;` or else the import won't work. Anki sometimes decides to put `,` as a default in there for some reason.
+
+### Simple apkg import
+
+In future releases I will also provide an additional .apkg file, which contains bosth basic and clozure type cards. You can use this one for importing instead of the two split .txt files. This is the recommended way of importing into Anki, but it is up you how you want to import the cards.
 
 ## Structure
 
