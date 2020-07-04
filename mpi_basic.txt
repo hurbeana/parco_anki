@@ -1,0 +1,20 @@
+MPI stands for;Message Passing Interface;MPI
+The message-passing model is called;<b>Communicating Sequential Processes (CSP)</b>;MPI CSP
+Which three basic communication models does MPI provide?;"
+<ul>
+  <li>Point-to-point</li>
+  <li>One-sided</li>
+  <li>Collective</li>
+</ul>";MPI characteristics
+What do you need to include in your source code file to use mpi?;"
+<code>
+#include <mpi.h>
+</code>";MPI code
+The success error code for MPI is;"<code>MPI_SUCCESS</code>";MPI code
+In order to have a successful point-to-point communication follow must hold:;"
+<ul>
+  <li>No more sent than received elements</li>
+  <li>signature is a prefix of receive signature</li>
+  <li>ranks match</li>
+  <li>tags equal</li>
+</ul>";MPI p2p
