@@ -13,7 +13,7 @@ The heaviest path in a task graph is often referred to as a {{c1::critical path}
 "The highest possible speedup in a task graph is given by \[S_p(n) = {{c1::\frac{T_{\text{seq} }(n)}{T_{\text{par} }(n)} }} {{c4::\leq}} {{c2::\frac{T_{\text{1}(n) } }{T_p(n)} }} {{c4::\leq}} {{c3::\frac{T_{\text{1} }(n)}{T\infty (n)} }}\]";Patterns task_graphs
 {{c1::\(\frac{T_{\text{1} }(n)}{T\infty (n)}\) }} is also known as the {{c2::parallelism}} of a task graph;Patterns task_graphs
 {{c1::Amdahl's Law}} applies when the critical path \(T\infty(n)\) is a {{c2::constant fraction of \(T_\text{1}(n)\)}};Patterns task_graphs
-Any greedy scheduler executes a DAG with work \(T_{\text{1}}\) and depth \(T\infty\) in \(T_p \leq {{c1::T_{\text{1} } + T\infty}}\) time steps;Patterns task_graphs scheduling
+Any greedy scheduler executes a DAG with work \(T_{\text{1}}\) and depth \(T\infty\) in \(T_p \leq {{c1::T_{\text{1} }/p + T\infty}}\) time steps;Patterns task_graphs scheduling
 Th greedy scheduler's two-optimality states that the running time \(T_p\) is within a factor of {{c1::2}} from the time that can be achieved by {{c2::an optimal schedule}};Patterns task_graphs scheduling
 The assigment of blocks, more generally individual itereations, to processor-cores is called {{c1::loop scheduling}};Patterns loops
 The {{c1::independence::in-/dependence}} of program fragments is a {{c2::sufficient::sufficient/required/insufficient}} condition for parallel execution;Patterns in_dependency
