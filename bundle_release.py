@@ -12,5 +12,5 @@ for c_f in Path.cwd().glob("*_cloze.txt"):
     c_t = c_f.read_text(encoding="utf-8")
     if c_t:
         cloze.append(c_t)
-basic_outpath.write_text("\n".join(basic))
-cloze_outpath.write_text("\n".join(cloze))
+basic_outpath.write_text("\n".join(basic), encoding="utf-8")
+cloze_outpath.write_text("\n".join(cloze), encoding="utf-8")
